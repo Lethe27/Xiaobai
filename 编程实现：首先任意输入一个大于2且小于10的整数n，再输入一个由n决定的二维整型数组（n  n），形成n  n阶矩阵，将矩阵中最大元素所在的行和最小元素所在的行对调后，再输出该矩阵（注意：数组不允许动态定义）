@@ -1,0 +1,66 @@
+#include<iostream>
+using namespace std;
+#include<math.h> 
+int main()
+{
+	int a[10][10];
+	int x, n, m, min, max, position1, position2;
+	cout << "请输入一个数字n！" << endl;
+	cin >> x;
+	cout << "请输入n*n个数字！" << endl;
+	for (int i = 0; i < x; i++)
+	{
+		for (int j = 0; j < x; j++)
+		{
+			cin >> a[i][j];
+		}
+	}
+	cout << "您输入的矩阵是 " << endl;
+	for (int i = 0; i < x; i++)
+	{
+		for (int j = 0; j < x; j++)
+		{
+			cout << a[i][j] << " ";
+		}
+		cout << endl;
+	}
+	cout << endl;
+	min = a[0][0];
+	max = a[0][0];
+	position1 = 0;
+	position2 = 0;
+	for (int i = 0; i < x; i++)
+	{
+		for (int j = 0; j < x; j++)
+		{
+			if (min > a[i][i])
+			{
+				min = a[i][j];
+				position1 = i;
+			}
+			if (max < a[i][i])
+			{
+				max = a[i][j];
+				position2 = i;
+			}
+		}
+
+		//position1,positon2分别为最大最小数所在行 
+	}
+	cout << "最大数在第" << position1 << "行。" << endl;;
+	cout << "最小数在第" << position2 << "行。" << endl;
+	for (int j = 0; j < x; j++)
+	{
+		swap(a[position1][j], a[position2][j]);//C++中自带的swap函数：
+	}
+	cout << "交换后" << endl;
+	for (int i = 0; i < x; i++)	//用循环输入和输出数组
+	{
+		for (int j = 0; j < x; j++)
+		{
+			cout << a[i][j] << " ";
+		}
+		cout << endl;
+	}
+	return 0;
+}
